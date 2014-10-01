@@ -1,0 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package woc;
+
+/**
+ *
+ * @author Sergio
+ */
+public class Bomb extends Building{
+    private int damage;
+
+    public Bomb(String name, int id, int posX, int posY, int sizeX, int sizeY, int currentHP, int maxHP, int level, Castle house, int damage) {
+        super(name, id, posX, posY, sizeX, sizeY, currentHP, maxHP, level, house);
+        this.damage = damage;
+    }
+}
