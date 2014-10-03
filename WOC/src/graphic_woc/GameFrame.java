@@ -7,6 +7,7 @@
 package graphic_woc;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import woc.Castle;
 import woc.Celd;
 
@@ -37,29 +38,111 @@ public class GameFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        pnlConfiguracion = new javax.swing.JPanel();
+        pnlOpciones = new javax.swing.JPanel();
+        btnJugar = new javax.swing.JButton();
+        btnOpciones = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Woi");
+        setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
 
-        jButton1.setText("jButton1");
+        pnlOpciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlOpciones.setPreferredSize(new java.awt.Dimension(300, 275));
+
+        btnJugar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnJugar.setText("Jugar");
+        btnJugar.setMaximumSize(new java.awt.Dimension(100, 75));
+        btnJugar.setMinimumSize(new java.awt.Dimension(100, 75));
+        btnJugar.setPreferredSize(new java.awt.Dimension(150, 75));
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+
+        btnOpciones.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnOpciones.setText("Opciones");
+        btnOpciones.setMaximumSize(new java.awt.Dimension(100, 75));
+        btnOpciones.setMinimumSize(new java.awt.Dimension(100, 75));
+        btnOpciones.setPreferredSize(new java.awt.Dimension(150, 75));
+
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnSalir.setText("Salir");
+        btnSalir.setMaximumSize(new java.awt.Dimension(100, 75));
+        btnSalir.setMinimumSize(new java.awt.Dimension(100, 75));
+        btnSalir.setPreferredSize(new java.awt.Dimension(150, 75));
+
+        javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);
+        pnlOpciones.setLayout(pnlOpcionesLayout);
+        pnlOpcionesLayout.setHorizontalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+        pnlOpcionesLayout.setVerticalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(312, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlConfiguracionLayout = new javax.swing.GroupLayout(pnlConfiguracion);
+        pnlConfiguracion.setLayout(pnlConfiguracionLayout);
+        pnlConfiguracionLayout.setHorizontalGroup(
+            pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConfiguracionLayout.createSequentialGroup()
+                .addContainerGap(1022, Short.MAX_VALUE)
+                .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        pnlConfiguracionLayout.setVerticalGroup(
+            pnlConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlConfiguracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 352, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 252, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
+        String nombre = JOptionPane.showInputDialog(this, "Ingrese el nombre de la partida.");
+        Castle castillo = new Castle(nombre);
+        pnlOpciones.setVisible(false);
+    }//GEN-LAST:event_btnJugarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,7 +158,11 @@ public class GameFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnJugar;
+    private javax.swing.JButton btnOpciones;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JPanel pnlConfiguracion;
+    private javax.swing.JPanel pnlOpciones;
     // End of variables declaration//GEN-END:variables
 
     private void addLanes()

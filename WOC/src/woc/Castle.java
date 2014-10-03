@@ -25,6 +25,13 @@ public class Castle {
     private ArrayList <Building> buildings;
     private Castle enemy;
 
+    public Castle(String name) {
+        this.name = name;
+        this.user = "";
+        this.password = "";
+        this.sizeX = 0;
+        this.sizeY = 0;
+    }
 
     public Castle(String user, String password, String name) {
         this.user = user;
