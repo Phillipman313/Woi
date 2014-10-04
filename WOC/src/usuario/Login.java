@@ -22,6 +22,29 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
+    
+    private void iniciar() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            try (Connection con = DriverManager.getConnection("jdbc:sqlite:juegobd")) {
+                Statement stmt = con.createStatement();
+                String informacion = "CREATE TABLE Partida ( \n" +
+                        "    idPuesto     INTEGER PRIMARY KEY ASC AUTOINCREMENT\n" +
+                        "                         NOT NULL\n" +
+                        "                         UNIQUE,\n" +
+                        "    nombre       TEXT    NOT NULL\n" +
+                        "                         UNIQUE,\n" +
+                        "    idUsuario_fk INTEGER NOT NULL\n" +
+                        "                         REFERENCES Usuario ( idUsuario ) \n" +
+                        ");";
+                stmt.executeQuery(informacion);
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        } catch (Exception ex) {
+            
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -98,6 +121,7 @@ public class Login extends javax.swing.JFrame {
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSalir.setText("Salir");
+        btnSalir.setDefaultCapable(false);
         btnSalir.setMaximumSize(new java.awt.Dimension(100, 50));
         btnSalir.setMinimumSize(new java.awt.Dimension(100, 50));
         btnSalir.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -156,15 +180,19 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         try {
-            DriverManager.registerDriver(new org.sqlite.JDBC());
-            Connection conexion = DriverManager.getConnection("jdbc:sqlite:UsuarioDb");
+            Class.forName("org.sqlite.JDBC");
+        } catch (Exception ex) {
+        }
+        try {
+            Connection conexion = DriverManager.getConnection("jdbc:sqlite:juegobd");
             Statement busqueda = conexion.createStatement();
-            ResultSet datos = busqueda.executeQuery("SELECT idUsuario, nombre, contrasena, tipo" +
-                                                    "FROM Usuario" +
+            ResultSet datos = busqueda.executeQuery("SELECT idUsuario, tipo " +
+                                                    "FROM Usuario " +
                                                     "WHERE nombre = " + txtUsuario.getText() + " AND " +
                                                           "contrasena = " + txtContrasena.getText() + ";");
             if (datos.first()) {
@@ -180,7 +208,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (SQLException ex) {
-            System.out.println("Error en conexion");
+            System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
