@@ -6,20 +6,24 @@
 
 package graphic_woc;
 
-import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Sergio
  */
 public class Frame extends JFrame implements Runnable, KeyListener  {
+
 
     private final int WIDTH = 1366;
     private final int HEIGHT = 730;
@@ -32,26 +36,35 @@ public class Frame extends JFrame implements Runnable, KeyListener  {
     BufferedImage doubleBuffer;
     Graphics2D doubleBufferG2D;
 
-    ArrayList<Sprite> allSprites = new ArrayList<Sprite>();
-    ArrayList<AnimatedSprite2> allAnimatedSprites = new ArrayList<AnimatedSprite2>();
+    ArrayList<Sprite> allSprites = new ArrayList<>();
+    ArrayList<AnimatedSprite2> allAnimatedSprites = new ArrayList<>();
 
     
     public static Frame instance = null;
     
     private Frame(){
         super();   
+        
+   ImagePanel panel = new ImagePanel(new ImageIcon("images/background.png").getImage());
+
+    
+    this.getContentPane().add(panel);
+    this.pack();
+    this.setVisible(true);
+    
         this.setSize(this.WIDTH, this.HEIGHT);
         
         /* Hide Toolbar*/
         //this.setUndecorated(true);
         //this.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
-        this.setVisible(true);
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /* Create the backbuffer as a BufferedImage object */
         this.doubleBuffer = new BufferedImage(this.WIDTH, this.HEIGHT, BufferedImage.TYPE_INT_RGB);
         /* create a Graphics 2D object to draw INTO this backbuffer */
         this.doubleBufferG2D = (Graphics2D) doubleBuffer.createGraphics();
 
+    this.setVisible(true);
        
     }
 
@@ -117,10 +130,13 @@ public class Frame extends JFrame implements Runnable, KeyListener  {
      */
     private void paintToBackbuffer(){
          /* The backbuffered version */
-        instance.doubleBufferG2D.setColor(Color.WHITE);
+        //instance.doubleBufferG2D.setColor(Color.BLUE);
+
+           //instance.getContentPane().add(panel);
+ 
         instance.doubleBufferG2D.fillRect(0, 0, instance.WIDTH, instance.HEIGHT);
         /*Causes horrible flicker!! Need double buffering */
-        instance.doubleBufferG2D.setColor(Color.red);
+        //instance.doubleBufferG2D.setColor(Color.red);
         //instance.doubleBufferG2D.fillRect(0, 0, 50, 50);
         /*Lets display what we captured from the keyEvents  */
 /*
@@ -292,4 +308,28 @@ public class Frame extends JFrame implements Runnable, KeyListener  {
         }
     }
   
+}
+class ImagePanel extends JPanel {
+
+  private Image img;
+
+  public ImagePanel(String img) {
+    this(new ImageIcon(img).getImage());
+  }
+
+  public ImagePanel(Image img) {
+    this.img = img;
+    Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+    setPreferredSize(size);
+    setMinimumSize(size);
+    setMaximumSize(size);
+    setSize(size);
+    setLayout(null);
+  }
+
+  @Override
+  public void paintComponent(Graphics g) {
+    g.drawImage(img, 0, 0, null);
+  }
+
 }

@@ -13,14 +13,14 @@ import static java.lang.Thread.sleep;
  *
  * @author Sergio
  */
-public class canon extends Building{
+public class Canon extends Building{
     private int range;
     private int attackDamage;
     private int attackSpeed;// Inverse 1000 is slower than 1
     private boolean terrestrial;
     private boolean anytarget;
 
-    public canon(int range, int attackDamage, int attackSpeed, boolean terrestrial, boolean anytarget, String name, int id, int posX, int posY, int currentHP, int maxHP, int level, Castle house) {
+    public Canon(int range, int attackDamage, int attackSpeed, boolean terrestrial, boolean anytarget, String name, int id, int posX, int posY, int currentHP, int maxHP, int level, Castle house) {
         super(name, id, posX, posY, 1, 1, currentHP, maxHP, level, house);
         this.range = range;
         this.attackDamage = attackDamage;

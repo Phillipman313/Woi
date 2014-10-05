@@ -8,6 +8,7 @@
 package woc;
 
 import graphic_woc.Frame;
+import graphic_woc.GameFrame;
 
 /**
  *
@@ -19,7 +20,9 @@ public class WOC {
     
     public static void main(String[] args)
     {
-        Frame.Frame();
+        GameFrame g = new GameFrame();
+        g.setVisible(true);
+        System.out.println("lol");
     }
     
 }

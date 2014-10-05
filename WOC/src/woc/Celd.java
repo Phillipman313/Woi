@@ -5,13 +5,29 @@
  */
 
 package woc;
-
+import graphic_woc.ImagePane;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 
 /**
  *
  * @author Sergio
  */
-public class Celd {
-    ArrayList<Defense> content;
+public class Celd extends JPanel {
+  public boolean select;
+  public ImagePane panel;
+  ArrayList<Defense> content;
+
+  public Celd() {
+    this.panel = new ImagePane();
+  }
+  
+  public Celd(ImagePane panel) {
+    this.panel = panel;
+  }
+
+    public Celd(Image img) {
+        this.panel= new ImagePane(img);
+    }
 }

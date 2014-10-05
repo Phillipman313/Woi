@@ -31,8 +31,8 @@ public class Castle {
         this.password = password;
         this.name = name;
         id = id++;
-        this.sizeX = 10;
-        this.sizeY = 10;
+        this.sizeX = 28;
+        this.sizeY = 15;
         this.exp = 0;
         this.gold = 10000;
         celds = new Celd[sizeY][sizeX];

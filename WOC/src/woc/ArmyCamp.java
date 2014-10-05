@@ -29,7 +29,7 @@ public class ArmyCamp extends Building{
         return soldiers;
     }
     
-    
+
     
     public boolean addSoldier(int type)
     {
