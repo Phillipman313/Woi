@@ -214,6 +214,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
